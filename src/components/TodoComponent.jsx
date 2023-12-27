@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
+import { saveTodo } from '../services/TodoService'
+import { useNavigate } from 'react-router-dom'
 
 const TodoComponent = () => {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [completed, setComleted] = useState(false)
+    const navigate = useNavigate()
 
-    function saveTodo(e){
+
+    function saveOrUpdateTodo(e){
         e.preventDefault()
 
         const todo = {title, description, completed}
-        console.log(todo)
+        console.log(todo);
+
+        saveTodo(todo).then((response)=>{
+            console.log(response.data)
+            navigate('/todos')
+        }).catch(error=>{
+            console.error(error);
+        })
     }
   return (
     <div className='container'>
@@ -60,7 +71,7 @@ const TodoComponent = () => {
                         </select>
 
                     </div>
-                    <button className='btn btn-success ' onClick={(e)=> saveTodo(e)}>Submit</button>
+                    <button className='btn btn-success ' onClick={(e)=> saveOrUpdateTodo(e)}>Submit</button>
                 </form>
 
             </div>
