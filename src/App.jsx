@@ -5,6 +5,7 @@ import HeaderComponent from './components/HeaderComponent';
 import ListTodoComponent from './components/ListTodoComponent'
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import TodoComponent from './components/TodoComponent';
 
 function App() {
   
@@ -16,7 +17,7 @@ function App() {
       {/* http://localhost:8082 */}
       <Route path='/' element={<ListTodoComponent/>}></Route>
       <Route path='/todos' element ={<ListTodoComponent/>} ></Route>
-
+      <Route path='/add-todo' element ={<TodoComponent/>} ></Route>
     </Routes>
     <FooterComponent/>
     </BrowserRouter>
