@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getAllTodos } from '../services/TodoService';
-import { useNavigate } from 'react-router-dom';
+import { deleteTodo, getAllTodos } from '../services/TodoService';
+import { redirect, useNavigate } from 'react-router-dom';
 
 
 const ListTodoComponent = () => {
@@ -30,6 +30,15 @@ const ListTodoComponent = () => {
         console.log(id)
         navigate(`/update-todo/${id}`)
     }
+    function removeTodo(id){
+        deleteTodo(id).then((response)=>{
+            listTodos();
+        }).catch(error=>{
+            console.error(error)
+        })
+    }
+    
+
     return (
         <div className='container'>
             <h2 className='text-center'>List of Todo</h2>
@@ -52,7 +61,7 @@ const ListTodoComponent = () => {
                                 <td>{todo.completed.toString()}</td>
                                 <td>
                                     <button className='btn btn-info' onClick={()=> updateTodo(todo.id)}>Update</button>
-                                    <button className='btn btn-dan'onClick={()=> removeTodo(todo.ui)}>Delete</button>
+                                    <button className='btn btn-danger'onClick={()=> removeTodo(todo.id)} style={{marginLeft: "10px"}}>Delete</button>
                                 </td>
                             </tr>
                         ))}
