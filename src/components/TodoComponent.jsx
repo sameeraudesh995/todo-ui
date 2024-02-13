@@ -53,7 +53,7 @@ const TodoComponent = () => {
                 getTodo(id).then((response)=>{
                     console.log(response.data)
                     setTitle(response.data.title)
-                    setDescription(response.data.descriptio)
+                    setDescription(response.data.description)
                     setComleted(response.data.comleted)
                 }).catch(error=>{
                     console.error(error);
