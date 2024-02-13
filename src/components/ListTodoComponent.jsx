@@ -52,6 +52,7 @@ const ListTodoComponent = () => {
                                 <td>{todo.completed.toString()}</td>
                                 <td>
                                     <button className='btn btn-info' onClick={()=> updateTodo(todo.id)}>Update</button>
+                                    <button className='btn btn-dan'onClick={()=> removeTodo(todo.ui)}>Delete</button>
                                 </td>
                             </tr>
                         ))}

@@ -19,6 +19,7 @@ const TodoComponent = () => {
 
         if(id){
             updateTodo(id, todo).then((response)=>{
+                console.log(response.data)
                 navigate('/todos')
             }).catch(error=>{
                 console.error(error);
